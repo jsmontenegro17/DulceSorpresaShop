@@ -10,7 +10,7 @@
 4. Init Page Menu
 5. Init Recently Viewed Slider
 6. Init Brands Slider
-7. Init Isotope
+7. Init Isotope 
 8. Init Price Slider
 9. Init Favorites
 
@@ -133,12 +133,12 @@ $(document).ready(function()
 		});
 
 
-		$('select').on('change', function (e)
-		{
-			placeholder.text(this.value);
+		// $('select').on('change', function (e)
+		// {
+		// 	placeholder.text(this.value);
 
-			$(this).animate({width: placeholder.width() + 'px' });
-		});
+		// 	$(this).animate({width: placeholder.width() + 'px' });
+		// });
 	}
 
 	/* 
@@ -365,9 +365,9 @@ $(document).ready(function()
     		$("#slider-range").slider(
 			{
 				range: true,
-				min: 0,
-				max: 1000,
-				values: [ 0, 580 ],
+				min: 200,
+				max: 200000,
+				values: [ 200, 200000 ],
 				slide: function( event, ui )
 				{
 					$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
