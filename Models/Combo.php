@@ -58,7 +58,7 @@ class Combo
 	{
 		try{
 			$result = array();
-			$stm = $this->pdo->prepare("SELECT * FROM combos INNER JOIN combo_types ON combos.combo_type_id=combo_types.combo_type_id WHERE combo_id = ".$combo_id);
+			$stm = $this->pdo->prepare("SELECT * FROM combos INNER JOIN combo_types ON combos.combo_type_id=combo_types.combo_type_id INNER JOIN bases ON combos.base_id=bases.base_id WHERE combo_id = ".$combo_id);
 			$stm -> execute();
 
 			return $stm->fetch(PDO::FETCH_OBJ);

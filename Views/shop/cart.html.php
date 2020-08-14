@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="public/styles/cart_responsive.css">
 <link rel="stylesheet" type="text/css" href="public/styles/shop/cart.css">
 <!-- CSS TABLE CON BUSCADOR -->
-  <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+ <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
 <!-- CSS ICHEK BOOTSTRAP -->
 <link href="https://cdn.jsdelivr.net/npm/icheck-bootstrap@3.0.1/icheck-bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <!-- CSS ICHEK lightbox -->
@@ -75,13 +75,6 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12" name="cart">
-					<nav>
-					  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-					    <a class="nav-item nav-link active" id="nav-cart-tab" data-toggle="tab" href="#nav-cart" role="tab" aria-controls="nav-cart" aria-selected="true">Carrito</a>
-					    <a class="nav-item nav-link" id="nav-additional-tab" data-toggle="tab" href="#nav-additional" role="tab" aria-controls="nav-additional" aria-selected="false">Adicionales</a>
-					    <a class="nav-item nav-link" id="nav-editable-product-tab" data-toggle="tab" href="#nav-editable-product" role="tab" aria-controls="nav-editable-product" aria-selected="false">Editar productos de tu combo</a>
-					  </div>
-					</nav>
 					<div class="tab-content" id="nav-tabContent">
 					  <div class="tab-pane fade show active" id="nav-cart" role="tabpanel" aria-labelledby="nav-cart-tab"><br>
 					  	<div class="cart_container">
@@ -141,180 +134,10 @@
 
 							<div class="cart_buttons">
 								<a href="?c=shop&a=index" class="button cart_button_clear"><i class="fa fa-plus-circle"></i> Agregar más al carrito</a>
-								<a href="" class="button cart_button_checkout">Empezar hacer la orden</a>
+								<a href="?c=order&a=create" class="button cart_button_checkout">Empezar hacer la orden</a>
 							</div>
 						</div>
 					  </div>
-					  <div class="tab-pane fade" id="nav-additional" role="tabpanel" aria-labelledby="nav-additional-tab"><br>
-					  	<table class="dataTables_length" id="table-products">
-	                        <thead>
-	                          <tr>
-	                            <th>Imagen</th>
-	                            <th>Nombre</th>
-	                            <th>Marca</th>
-	                            <th>C. Neto</th>
-	                            <th>Precio</th>
-	                            <th class="text-center">Agregar</th>
-	                            <th>Cantidad</th>
-	                          </tr>
-	                        </thead>
-	                        <tbody>
-	                          <?php foreach($products as $product): ?>
-	                          <!-- sumar el 60% al precio original de la base -->
-	                          <?php $product_price = $product->product_price; $product_price += ($product_price * 60 / 100);?>
-	                          <!-- sumar el 60% al precio original de la base -->
-	                          <tr>
-	                            <td>
-	                              <div class="img-thumbnail justify-content-center" style="width: 42px; height: 50px; margin: 1px; overflow: hidden;">
-	                                <a href="<?php echo $product->product_image_name; ?>" data-gallery="product-gallery-<?php echo $product->product_id; ?>" data-title="<?php echo $product->product_name; ?> ($<?php echo $product_price; ?>)" data-toggle="lightbox">
-	                                <img width="100%" height="auto" src="<?php echo  $product->product_image_name; ?>">
-	                                </a>
-	                              </div>  
-	                            </td>
-	                            <td class="align-middle"><?php echo $product->product_name; ?></td>
-	                            <td class="align-middle"><?php echo $product->product_trademark; ?></td>
-	                            <td class="align-middle"><?php echo $product->product_net_content; ?></td>
-	                            <td class="align-middle">$<?php echo $product_price; ?></td>
-	                            <td class="text-center align-middle">
-	                              <div class="icheck-primary d-inline">
-	                                <input class="checkbox-product" type="checkbox" id="checkbox<?php echo $product->product_id; ?>"  data-id="<?php echo $product->product_id; ?>" data-price="<?php echo $product_price; ?>" value="<?php echo $product->product_id; ?>" name="product_id[]" >
-	                                <label for="checkbox<?php echo $product->product_id; ?>" >
-	                                </label>
-	                              </div>                          
-	                            </td>
-	                            <td>
-	                              <input class="units-product" name="units[<?php echo $product->product_id; ?>]" id="units<?php echo $product->product_id; ?>" data-price="<?php echo $product_price; ?>" type="number" min="0" value="0" data-price-count="0" data-id="<?php echo $product->product_id; ?>"  style="width: 60px; height: 40px; padding: 9px; font-size: 30px; margin: 5px;" disabled>
-	                            </td>
-	                          </tr>
-	                          <?php endforeach?>
-	                        </tbody>
-	                    </table>
-					  </div>
-					  <div class="tab-pane fade" id="nav-editable-product" role="tabpanel" aria-labelledby="nav-editable-product-tab">
-					  	<div id="accordion">
-					  	<?php if(isset($_SESSION['shop-cart'])){ ?>
-					  		<?php $count_combo = 0; ?>
-					  		<?php foreach ($_SESSION['shop-cart'] as $shop_cart) { ?>
-					  			<?php $combo = $this->combos->find($shop_cart['combo_id']); ?>
-					  			<?php for ($quantity=0; $quantity < $shop_cart['quantity'] ; $quantity++) { ?>
-					  				<?php $count_combo++; ?>
-									<div class="card">
-									    <div class="card-header" id="headingOne">
-									      <h5 class="mb-0">
-									        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-<?php echo $shop_cart['combo_id']."-".$count_combo?>" aria-expanded="true" aria-controls="collapse<?php echo $shop_cart['combo_id']?>" style="cursor: pointer;" >
-									          <?php echo ucwords($combo->combo_name)." (".ucwords($combo->combo_type_name).") #".$count_combo; ?>
-									          Productos editables <i class="fa fa-sort-down"></i>
-									        </button>
-									      </h5>
-									    </div>
-									    <div id="collapse-<?php echo $shop_cart['combo_id']."-".$count_combo?>" class="collapse <?php if($count_combo==1){ echo 'show'; } ?>" aria-labelledby="headingOne" data-parent="#accordion">
-									      	<div class="card-body">
-									      		<div class="row">
-  													<div class="col-4">
-  														<div class="list-group" id="list-tab" role="tablist">
-												       	<?php $products = $this->products->comboProducts($shop_cart['combo_id']); ?>
-												       	<?php $count_product = 0; ?>
-												       	<?php foreach($products as $product){ ?>
-												       		<?php $product_categories = $this->products->productCategories($product->product_id) ?>
-											       			<?php foreach($product_categories as $product_categorie){ ?>
-											       				<?php if($product_categorie->product_category_id==1){?>	
-											       					<a class="list-group-item list-group-item-action <?php if($count_product==0){ echo 'active';  $count_product ++;} ?>" id="list-home-list" data-toggle="list" href="#list-<?php echo $product->product_id ?>" role="tab" aria-controls="home">
-											       						<?php echo ucfirst($product->product_name.' ('.$product->product_trademark.')') ?>
-											       						<span class="badge badge-warning badge-pill float-right" style="font-size: 13px"><?php echo $product->units?></span>
-											       					</a>
-
-												       			<?php }?>
-												       		<?php }?>
-													    <?php }?>
-														</div>
-												    </div>
-												    <div class="col-8">
-   														<div class="tab-content" id="nav-tabContent">
-   															<?php $products = $this->products->comboProducts($shop_cart['combo_id']); ?>
-													       	<?php $count_product = 0; ?>
-													       	<?php foreach($products as $product){ ?>										       		
-													       		<?php $colors = explode(",", $product->product_colors);?>
-													       		<?php $flavors = explode(",", $product->product_flavors);?>
-													       		<?php $recipes = explode("->", $product->product_recipes);?>
-													       		<?php $product_categories = $this->products->productCategories($product->product_id) ?>
-												       			<?php foreach($product_categories as $product_categorie){ ?>
-												       				<?php if($product_categorie->product_category_id==1){?>	
-												       					<div class="tab-pane fade show <?php if($count_product==0){ echo 'active'; $count_product ++; } ?>" id="list-<?php echo $product->product_id ?>" role="tabpanel" aria-labelledby="list-home-list">
-												       						<table class="table">
-																			  	<thead>
-																				    <tr>
-																					    <th scope="col">#</th>
-																					    <?php if($product->product_colors != null){?> 
-																					    	<th class="text-center" scope="col">Colores</th>
-																					    <?php } ?>
-																					    <?php if($product->product_flavors != null){?> 
-																					    	<th class="text-center" scope="col">Sabores</th>
-																					    <?php } ?>
-																					    <?php if($product->product_recipes != null){?> 
-																					    	<th class="text-center" scope="col">Recetas</th>
-																					    <?php } ?>
-																				    </tr>
-																			  	</thead>
-																			  	<tbody>
-																			  		<?php for ($i=0; $i < $product->units ; $i++) { ?>
-																			  		
-
-																			  		<tr>
-																			  			<td><?php $num=1; echo $num= $num + $i;?></td>
-																			  			<?php if($product->product_colors != null){?>	
-																			  			<td>
-																			  				<select class="custom-select my-1 mr-sm-2 col-lg-12" id="inlineFormCustomSelectPref" name="<?php echo $product->product_id."-color-".$num ?>">	
-																			  					<option value="prediseñado">Mira las opciones</option>
-																			  					<option value="prediseñado">A nuestro gusto</option>
-																			  					<?php foreach ($colors as $key => $color) { ?>
-																			  						<option value="<?php echo $color ?>"><?php echo $color ?></option>
-																			  					<?php } ?>
-																			  				</select>
-																			  			</td>
-																			  			<?php } ?>
-																			  			<?php if($product->product_flavors != null){?>	
-																			  			<td>
-																			  				<select class="custom-select my-1 mr-sm-2 col-lg-12" id="inlineFormCustomSelectPref" name="<?php echo $product->product_id."-flagor-".$num ?>"  <?php if($product->product_flavors == null){ echo 'disabled'; } ?>>
-																			  					<option value="prediseñado">Mira las opciones</option>
-																			  					<option value="prediseñado">A nuestro gusto</option>
-																			  					<?php foreach ($flavors as $key => $flavor) { ?>
-																			  						<option value="<?php echo $flavor ?>"><?php echo $flavor ?></option>
-																			  					<?php } ?>
-																			  				</select>			
-																			  			</td>
-																			  			<?php } ?>
-																			  			<?php if($product->product_recipes != null){?>
-																			  			<td>
-																			  				<select class="custom-select my-1 mr-sm-2 col-lg-12" id="inlineFormCustomSelectPref" name="<?php echo $product->product_id."-recipe-".$num ?>"  <?php if($product->product_recipes == null){ echo 'disabled'; } ?>>
-																			  					<option value="prediseñado">Mira las opciones</option>
-																			  					<option value="prediseñado">A nuestro gusto</option>
-																			  					<?php foreach ($recipes as $key => $recipe) { ?>
-																			  						<?php if ($recipe != null){ ?>
-																			  							<option value="<?php echo $recipe ?>"><?php echo $recipe ?></option>
-																			  						<?php } ?>
-																			  					<?php } ?>
-																			  				</select>
-																			  			</td>
-																			  			<?php } ?>
-																			  		</tr>
-																			  		<?php }?>
-																			  	</tbody>	
-																			</table>
-												       					</div>
-													       			<?php }?>
-													       		<?php }?>
-														    <?php }?>
-   														</div>
-   													</div>	
-												</div>   					 
-										    </div>
-									    </div>
-									</div>
-								<?php }?>
-							<?php }?>	
-						 <?php }?>
-						</div>
-					  </div>					  
 					</div>
 				</div>
 			</div>

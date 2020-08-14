@@ -35,7 +35,7 @@ class Product
 		{
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT * FROM products");
+			$stm = $this->pdo->prepare("SELECT * FROM products ");
 			$stm->execute();
 
 			return  $stm->fetchAll(PDO::FETCH_OBJ);
@@ -51,7 +51,7 @@ class Product
 		{
 			$result = array();
 
-			$stm = $this->pdo->prepare("SELECT * FROM combo_products 
+			$stm = $this->pdo->prepare("SELECT products.product_id, products.product_name, products.product_trademark, products.product_net_content, products.product_colors, products.product_flavors, products.product_recipes, products.product_customization, products.product_price, products.product_image_name, products.product_state, combo_products.units  FROM combo_products 
 				INNER JOIN products 
 				on products.product_id = combo_products.product_id WHERE 
 				combo_id=".$combo_id);
@@ -86,6 +86,39 @@ class Product
 		{
 			die($e->getMessage());
 		}
+	}
+
+	public function find($product_id){
+		try
+		{
+			$result = array();
+
+			$stm = $this->pdo->prepare("SELECT * FROM products 
+				WHERE product_id=".$product_id);
+
+			$stm->execute();
+
+			return  $stm->fetch(PDO::FETCH_OBJ);
+
+		}catch(Exception $e)
+		{
+			die($e->getMessage());
+		}	
+	}
+
+	public function arrayConvert($array)
+	{
+
+		
+		foreach ($array as $value) {
+			
+			$arrayNew[0][]=$value->product_id;
+			$arrayNew[1][$value->product_id]=$value->units;
+			
+		}
+		return $arrayNew;
+		// return json_decode(json_encode($array),true);
+		 
 	}
 }
 
