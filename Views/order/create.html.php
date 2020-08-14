@@ -186,7 +186,7 @@
 										          <?php echo ucwords($combo->combo_name)." (".ucwords($combo->combo_type_name).") #".$count_combo; ?>
 										          Productos editables <i class="fa fa-sort-down"></i>
 										        </button>
-										        <span class="badge badge-warning badge-pill float-right" style="font-size: 13px"><strong id="count-product-modifiable-<?php echo $count_combo?>" data-current-count-producte=""></strong></span>
+										        <span class="badge badge-warning badge-pill float-right" style="font-size: 13px"><strong id="count-product-modifiable-<?php echo $count_combo?>" data-current-count-product=""></strong></span>
 										      </h5>
 										    </div>
 										    <div id="collapse-modification-<?php echo $shop_cart['combo_id']."-".$count_combo?>" class="collapse <?php if($count_combo==1){ echo 'show'; } ?>" aria-labelledby="heading-<?php echo $count_combo?>" data-parent="#accordion-modification">

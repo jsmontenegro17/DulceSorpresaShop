@@ -145,7 +145,7 @@ $(document).ready(function(){
         const price = parseInt($(this).attr("data-price"));
 
         const count_product_modifiable = parseInt($("#count-product-modifiable-"+count).attr("data-current-count-product"));
-        alert("#count-product-modifiable-"+count);
+        
     
 
         if( $(this).is(':checked') ){
@@ -154,14 +154,13 @@ $(document).ready(function(){
             $('#units'+id+'-'+count).val('1');
             $('#units'+id+'-'+count).attr('min','1');
             $('#units'+id+'-'+count).attr('data-price-count',price);
-            $("#count-product-modifiable-"+count).html(parseInt(count_product_modifiable+1));
-            $("#count-product-modifiable-"+count).attr("data-current-count-product", parseInt(count_product_modifiable+1));
             const units = $('#units'+id+'-'+count).val();
 
             
             if ($("#category-"+id+"-"+count).val()=="1") {
 
-
+                $("#count-product-modifiable-"+count).html(parseInt(count_product_modifiable+1));
+                $("#count-product-modifiable-"+count).attr("data-current-count-product", parseInt(count_product_modifiable+1));
                 $('#list-tab-'+count).append('<a class="list-group-item list-group-item-action list-product-'+count+'" data-count="'+count+'" id="list-home-list-'+id+'-'+count+'" data-toggle="list" href="#list-'+id+'-'+count+'" role="tab" aria-controls="home"></a>'); 
                 $('#list-home-list-'+id+'-'+count).append($("#category-"+id+"-"+count).data("product-name")+' ('+$("#category-"+id+"-"+count).data("product-trademark")+')');
                 $('#list-home-list-'+id+'-'+count).append('<span class="badge badge-warning badge-pill float-right" id="modification-count-'+id+'-'+count+'" style="font-size: 13px">'+units+'</span>');
@@ -175,7 +174,7 @@ $(document).ready(function(){
                 $("#list-"+id+"-"+count).append("<table class='table'><thead id='thead-modification-"+id+"-"+count+"'></thead><tbody id='tbody-modification-"+id+"-"+count+"'></tbody></table>");
                 $("#tbody-modification-"+id+"-"+count).html("");
                 $("#thead-modification-"+id+"-"+count).html("");
-                $("#thead-modification-"+id+"-"+count).append("<tr class='bg-primary' style='color:white;'><th>#</th><th class='flavors-"+id+" text-center'>Sabores</th><th class='colors-"+id+" text-center'>Colores</th><th class='recipes-"+id+" text-center'>Recetas</th></tr>");
+                $("#thead-modification-"+id+"-"+count).append("<tr class='bg-primary' style='color:white;'><th>"+$("#category-"+id+"-"+count).data("product-name")+"#</th><th class='flavors-"+id+" text-center'>Sabores</th><th class='colors-"+id+" text-center'>Colores</th><th class='recipes-"+id+" text-center'>Recetas</th></tr>");
 
                 for (var i = 0; i < units; i++) {
                     $("#tbody-modification-"+id+"-"+count).append("<tr><td>"+parseInt(i+1)+"</td> <td class='flavors-"+id+"'><select class='custom-select my-1 mr-sm-2 col-lg-12' id='select-flavors-"+id+"-"+count+"-"+parseInt(i+1)+"' name=''> <option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select></td><td class='colors-"+id+"'><select id='select-colors-"+id+"-"+count+"-"+parseInt(i+1)+"' class='custom-select my-1 mr-sm-2 col-lg-12' id='inlineFormCustomSelectPref' name=''><option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select</td><td class='recipes-"+id+"'><select id='select-recipes-"+id+"-"+count+"-"+parseInt(i+1)+"' class='custom-select my-1 mr-sm-2 col-lg-12' id='inlineFormCustomSelectPref' name=''><option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select></td></tr>");
@@ -220,10 +219,11 @@ $(document).ready(function(){
             $('#units'+id+'-'+count).attr('data-price-count',0);
             $('#list-home-list-'+id+'-'+count).remove();
             $('#list-'+id+'-'+count).empty();
-            $("#count-product-modifiable-"+count).html(parseInt(count_product_modifiable-1));
-            $("#count-product-modifiable-"+count).attr("data-current-count-product", parseInt(count_product_modifiable-1));
-            // $("#tbody-modification-"+id+"-"+count).remove();
-            // $("#thead-modification-"+id+"-"+count).remove();
+            if ($("#category-"+id+"-"+count).val()=="1") {
+
+                $("#count-product-modifiable-"+count).html(parseInt(count_product_modifiable-1));
+                $("#count-product-modifiable-"+count).attr("data-current-count-product", parseInt(count_product_modifiable-1));
+            }
             var count_list = 1;
             $(".list-product-"+count).each(function(){
 
@@ -312,7 +312,7 @@ $(document).ready(function(){
         $("#modification-count-"+id+"-"+count).html(modification_count);
         $("#tbody-modification-"+id+"-"+count).html("");
         $("#thead-modification-"+id+"-"+count).html("");
-        $("#thead-modification-"+id+"-"+count).append("<tr><th>#</th><th class='flavors-"+id+" text-center'>Sabores</th><th class='colors-"+id+" text-center'>Colores</th><th class='recipes-"+id+" text-center'>Recetas</th></tr>");
+        $("#thead-modification-"+id+"-"+count).append("<tr class='bg-primary' style='color:white;'><th>"+$("#category-"+id+"-"+count).data("product-name")+"#</th><th class='flavors-"+id+" text-center'>Sabores</th><th class='colors-"+id+" text-center'>Colores</th><th class='recipes-"+id+" text-center'>Recetas</th></tr>");
 
 
         for (var i = 0; i < modification_count; i++) {
