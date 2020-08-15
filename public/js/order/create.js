@@ -61,11 +61,11 @@ $(document).ready(function(){
         $("#list-"+id+"-"+count).html("");
         $("#list-"+id+"-"+count).append("<table class='table'><thead id='thead-modification-"+id+"-"+count+"'></thead><tbody id='tbody-modification-"+id+"-"+count+"'></tbody></table>");
         $("#tbody-modification-"+id+"-"+count).html("");
-        $("#thead-modification-"+id+"-"+count).append("<tr class='bg-primary' style='color:white;'><th>"+$("#category-"+id+"-"+count).data("product-name")+"#</th><th class='flavors-"+id+" text-center'>Sabores</th><th class='colors-"+id+" text-center'>Colores</th><th class='recipes-"+id+" text-center'>Recetas</th></tr>");
+        $("#thead-modification-"+id+"-"+count).append("<tr class='bg-primary' style='color:white;'><th>"+$("#category-"+id+"-"+count).data("product-name")+"</th><th class='flavors-"+id+" text-center'>Sabores</th><th class='colors-"+id+" text-center'>Colores</th><th class='recipes-"+id+" text-center'>Recetas</th></tr>");
         for (var i = 0; i < modification_count; i++) {
 
             
-            $("#tbody-modification-"+id+"-"+count).append("<tr><td>"+parseInt(i+1)+"</td> <td class='flavors-"+id+"'><select class='custom-select my-1 mr-sm-2 col-lg-12' id='select-flavors-"+id+"-"+count+"-"+parseInt(i+1)+"' name=''> <option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select></td><td class='colors-"+id+"'><select id='select-colors-"+id+"-"+count+"-"+parseInt(i+1)+"' class='custom-select my-1 mr-sm-2 col-lg-12' id='inlineFormCustomSelectPref' name=''><option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select</td><td class='recipes-"+id+"'><select id='select-recipes-"+id+"-"+count+"-"+parseInt(i+1)+"' class='custom-select my-1 mr-sm-2 col-lg-12' id='inlineFormCustomSelectPref' name=''><option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select></td></tr>");
+            $("#tbody-modification-"+id+"-"+count).append("<tr><td># "+parseInt(i+1)+"</td> <td class='flavors-"+id+"'><select class='custom-select my-1 mr-sm-2 col-lg-12' id='select-flavors-"+id+"-"+count+"-"+parseInt(i+1)+"' name=''> <option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select></td><td class='colors-"+id+"'><select id='select-colors-"+id+"-"+count+"-"+parseInt(i+1)+"' class='custom-select my-1 mr-sm-2 col-lg-12' id='inlineFormCustomSelectPref' name=''><option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select</td><td class='recipes-"+id+"'><select id='select-recipes-"+id+"-"+count+"-"+parseInt(i+1)+"' class='custom-select my-1 mr-sm-2 col-lg-12' id='inlineFormCustomSelectPref' name=''><option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select></td></tr>");
            
             if (colors == "") {
                 $("#select-colors-"+id+"-"+count+"-"+parseInt(i+1)).attr("disabled", "true");
@@ -105,6 +105,7 @@ $(document).ready(function(){
         const count = $(this).data("count"); 
         $("#count-product-modifiable-"+count).html($(".list-product-"+count).length);
         $("#count-product-modifiable-"+count).attr("data-current-count-product",($(".list-product-"+count).length));
+        $("#collapse-modification-"+count).attr("data-count-product", ($(".list-product-"+count).length));
     });
    
     // $(".base").each(function(){
@@ -159,8 +160,16 @@ $(document).ready(function(){
             
             if ($("#category-"+id+"-"+count).val()=="1") {
 
+                if ($("#button-accordion-modification-"+count).attr("disabled")) {
+
+                    $("#button-accordion-modification-"+count).removeAttr("disabled");
+                }
+
                 $("#count-product-modifiable-"+count).html(parseInt(count_product_modifiable+1));
                 $("#count-product-modifiable-"+count).attr("data-current-count-product", parseInt(count_product_modifiable+1));
+                $("#collapse-modification-"+count).attr("data-count-product", parseInt(count_product_modifiable+1));
+
+
                 $('#list-tab-'+count).append('<a class="list-group-item list-group-item-action list-product-'+count+'" data-count="'+count+'" id="list-home-list-'+id+'-'+count+'" data-toggle="list" href="#list-'+id+'-'+count+'" role="tab" aria-controls="home"></a>'); 
                 $('#list-home-list-'+id+'-'+count).append($("#category-"+id+"-"+count).data("product-name")+' ('+$("#category-"+id+"-"+count).data("product-trademark")+')');
                 $('#list-home-list-'+id+'-'+count).append('<span class="badge badge-warning badge-pill float-right" id="modification-count-'+id+'-'+count+'" style="font-size: 13px">'+units+'</span>');
@@ -174,10 +183,10 @@ $(document).ready(function(){
                 $("#list-"+id+"-"+count).append("<table class='table'><thead id='thead-modification-"+id+"-"+count+"'></thead><tbody id='tbody-modification-"+id+"-"+count+"'></tbody></table>");
                 $("#tbody-modification-"+id+"-"+count).html("");
                 $("#thead-modification-"+id+"-"+count).html("");
-                $("#thead-modification-"+id+"-"+count).append("<tr class='bg-primary' style='color:white;'><th>"+$("#category-"+id+"-"+count).data("product-name")+"#</th><th class='flavors-"+id+" text-center'>Sabores</th><th class='colors-"+id+" text-center'>Colores</th><th class='recipes-"+id+" text-center'>Recetas</th></tr>");
+                $("#thead-modification-"+id+"-"+count).append("<tr class='bg-primary' style='color:white;'><th>"+$("#category-"+id+"-"+count).data("product-name")+"</th><th class='flavors-"+id+" text-center'>Sabores</th><th class='colors-"+id+" text-center'>Colores</th><th class='recipes-"+id+" text-center'>Recetas</th></tr>");
 
                 for (var i = 0; i < units; i++) {
-                    $("#tbody-modification-"+id+"-"+count).append("<tr><td>"+parseInt(i+1)+"</td> <td class='flavors-"+id+"'><select class='custom-select my-1 mr-sm-2 col-lg-12' id='select-flavors-"+id+"-"+count+"-"+parseInt(i+1)+"' name=''> <option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select></td><td class='colors-"+id+"'><select id='select-colors-"+id+"-"+count+"-"+parseInt(i+1)+"' class='custom-select my-1 mr-sm-2 col-lg-12' id='inlineFormCustomSelectPref' name=''><option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select</td><td class='recipes-"+id+"'><select id='select-recipes-"+id+"-"+count+"-"+parseInt(i+1)+"' class='custom-select my-1 mr-sm-2 col-lg-12' id='inlineFormCustomSelectPref' name=''><option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select></td></tr>");
+                    $("#tbody-modification-"+id+"-"+count).append("<tr><td># "+parseInt(i+1)+"</td> <td class='flavors-"+id+"'><select class='custom-select my-1 mr-sm-2 col-lg-12' id='select-flavors-"+id+"-"+count+"-"+parseInt(i+1)+"' name=''> <option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select></td><td class='colors-"+id+"'><select id='select-colors-"+id+"-"+count+"-"+parseInt(i+1)+"' class='custom-select my-1 mr-sm-2 col-lg-12' id='inlineFormCustomSelectPref' name=''><option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select</td><td class='recipes-"+id+"'><select id='select-recipes-"+id+"-"+count+"-"+parseInt(i+1)+"' class='custom-select my-1 mr-sm-2 col-lg-12' id='inlineFormCustomSelectPref' name=''><option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select></td></tr>");
                    
                     if (colors == "") {
                         $("#select-colors-"+id+"-"+count+"-"+parseInt(i+1)).attr("disabled", "true");
@@ -211,6 +220,24 @@ $(document).ready(function(){
                         });
                     }
                 }
+                var count_list = 1;
+                $(".list-product-"+count).each(function(){
+
+                    $(this).removeClass("active");
+                    var href = $(this).attr("href");
+                        $(href).removeClass("show");
+                        $(href).removeClass("active");
+
+
+                    if (count_list == 1) {
+                        
+                        $(this).addClass("active");
+                        $(href).addClass("show");
+                        $(href).addClass("active");
+
+                    }
+                    count_list++
+                });
             }
 //////////////////////////////////////////////////////////////////// CUANDO SE QUITA EL CHECKED
         }else{
@@ -223,6 +250,25 @@ $(document).ready(function(){
 
                 $("#count-product-modifiable-"+count).html(parseInt(count_product_modifiable-1));
                 $("#count-product-modifiable-"+count).attr("data-current-count-product", parseInt(count_product_modifiable-1));
+                $("#collapse-modification-"+count).attr("data-count-product", parseInt(count_product_modifiable-1));
+
+                if(parseInt(count_product_modifiable-1)==0){
+                    
+                    var count_collapse_modification = 1;
+                    $("#button-accordion-modification-"+count).attr("disabled", "true");
+
+                    $(".collapse-modification").each(function(){
+                        const data_count_product = $(this).attr("data-count-product");
+                        if (count_collapse_modification == 1 && data_count_product == 0) {
+                            $(this).removeClass("show");
+                        }else{
+                            $(this).addClass("show");
+                        }
+                        count_collapse_modification++
+                    });
+
+                }
+
             }
             var count_list = 1;
             $(".list-product-"+count).each(function(){
@@ -312,11 +358,11 @@ $(document).ready(function(){
         $("#modification-count-"+id+"-"+count).html(modification_count);
         $("#tbody-modification-"+id+"-"+count).html("");
         $("#thead-modification-"+id+"-"+count).html("");
-        $("#thead-modification-"+id+"-"+count).append("<tr class='bg-primary' style='color:white;'><th>"+$("#category-"+id+"-"+count).data("product-name")+"#</th><th class='flavors-"+id+" text-center'>Sabores</th><th class='colors-"+id+" text-center'>Colores</th><th class='recipes-"+id+" text-center'>Recetas</th></tr>");
+        $("#thead-modification-"+id+"-"+count).append("<tr class='bg-primary' style='color:white;'><th>"+$("#category-"+id+"-"+count).data("product-name")+"</th><th class='flavors-"+id+" text-center'>Sabores</th><th class='colors-"+id+" text-center'>Colores</th><th class='recipes-"+id+" text-center'>Recetas</th></tr>");
 
 
         for (var i = 0; i < modification_count; i++) {
-            $("#tbody-modification-"+id+"-"+count).append("<tr><td>"+parseInt(i+1)+"</td> <td class='flavors-"+id+"'><select class='custom-select my-1 mr-sm-2 col-lg-12' id='select-flavors-"+id+"-"+count+"-"+parseInt(i+1)+"' name=''> <option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select></td><td class='colors-"+id+"'><select id='select-colors-"+id+"-"+count+"-"+parseInt(i+1)+"' class='custom-select my-1 mr-sm-2 col-lg-12' id='inlineFormCustomSelectPref' name=''><option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select</td><td class='recipes-"+id+"'><select id='select-recipes-"+id+"-"+count+"-"+parseInt(i+1)+"' class='custom-select my-1 mr-sm-2 col-lg-12' id='inlineFormCustomSelectPref' name=''><option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select></td></tr>");
+            $("#tbody-modification-"+id+"-"+count).append("<tr><td># "+parseInt(i+1)+"</td> <td class='flavors-"+id+"'><select class='custom-select my-1 mr-sm-2 col-lg-12' id='select-flavors-"+id+"-"+count+"-"+parseInt(i+1)+"' name=''> <option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select></td><td class='colors-"+id+"'><select id='select-colors-"+id+"-"+count+"-"+parseInt(i+1)+"' class='custom-select my-1 mr-sm-2 col-lg-12' id='inlineFormCustomSelectPref' name=''><option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select</td><td class='recipes-"+id+"'><select id='select-recipes-"+id+"-"+count+"-"+parseInt(i+1)+"' class='custom-select my-1 mr-sm-2 col-lg-12' id='inlineFormCustomSelectPref' name=''><option value='prediseñado'>Mira las opciones</option><option value='prediseñado'>A nuestro gusto</option></select></td></tr>");
            
             if (colors == "") {
                 $("#select-colors-"+id+"-"+count+"-"+parseInt(i+1)).attr("disabled", "true");
@@ -355,18 +401,21 @@ $(document).ready(function(){
 
     $(".list-group-item").click(function(){
         const count = $(this).data("count"); 
-        // console.log(count);
         var count_list = 1;
-        $(".list-product-"+count).each(function(){
-            if (count_list == 1) {
+        if($(this).is(".active")){
+            // alert(hola);
+        }else{
+            $(".list-product-"+count).each(function(){
+                if (count_list == 1) {
 
-                var href = $(this).attr("href");
-                $(href).removeClass("show");
-                $(href).removeClass("active");
+                    var href = $(this).attr("href");
+                    $(href).removeClass("show");
+                    $(href).removeClass("active");
 
-            }
-            count_list++
-        });
+                }
+                count_list++
+            });
+        }
     });
 
     $('.dataTables_length').DataTable({

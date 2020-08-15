@@ -118,7 +118,7 @@
 
 								    <div id="collapse-<?php echo $shop_cart['combo_id']."-".$count_combo?>" class="collapse <?php if($count_combo==1){ echo 'show'; } ?>" aria-labelledby="heading-<?php echo $count_combo?>" data-parent="#accordion-additional">
 									    <div class="card-body" style="overflow-y: scroll; height: 400px;">
-									    	<h2 class="text-center">Agregar o quitar productos de tu combo</h2>
+									    	<h2 class="text-center">Agregar o quitar productos del combo <?php echo ucwords($combo->combo_name); ?></h2>
 						                    <table class="dataTables_length" id="table-products">
 						                        <thead>
 						                          <tr>
@@ -179,17 +179,17 @@
 						  			<?php $combo = $this->combos->find($shop_cart['combo_id']); ?>
 						  			<?php for ($quantity=0; $quantity < $shop_cart['quantity'] ; $quantity++) { ?>
 						  				<?php $count_combo++; ?>
-										<div class="card">
+										<div class="card" id="card-modification-<?php echo $count_combo?>">
 										    <div class="card-header" id="heading-<?php echo $count_combo?>">
 										      <h5 class="mb-0">
-										        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-modification-<?php echo $shop_cart['combo_id']."-".$count_combo?>" aria-expanded="true" aria-controls="collapse<?php echo $shop_cart['combo_id']?>" style="cursor: pointer;" >
+										        <button class="btn btn-link" id="button-accordion-modification-<?php echo $count_combo?>" data-toggle="collapse" data-target="#collapse-modification-<?php echo $count_combo?>" aria-expanded="true" aria-controls="collapse<?php echo $shop_cart['combo_id']?>"  style="cursor: pointer;">
 										          <?php echo ucwords($combo->combo_name)." (".ucwords($combo->combo_type_name).") #".$count_combo; ?>
 										          Productos editables <i class="fa fa-sort-down"></i>
 										        </button>
-										        <span class="badge badge-warning badge-pill float-right" style="font-size: 13px"><strong id="count-product-modifiable-<?php echo $count_combo?>" data-current-count-product=""></strong></span>
+										        <span class="badge badge-warning badge-pill float-right" style="font-size: 13px"><strong id="count-product-modifiable-<?php echo $count_combo?>" ></strong></span>
 										      </h5>
 										    </div>
-										    <div id="collapse-modification-<?php echo $shop_cart['combo_id']."-".$count_combo?>" class="collapse <?php if($count_combo==1){ echo 'show'; } ?>" aria-labelledby="heading-<?php echo $count_combo?>" data-parent="#accordion-modification">
+										    <div id="collapse-modification-<?php echo $count_combo?>" class="collapse collapse-modification <?php if($count_combo==1){ echo 'show'; } ?>" aria-labelledby="heading-<?php echo $count_combo?>" data-parent="#accordion-modification">
 										      	<div class="card-body">
 										      		<div class="row">
 	  													<div class="col-4">

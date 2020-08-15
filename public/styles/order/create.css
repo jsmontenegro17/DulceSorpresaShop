@@ -29,3 +29,13 @@ button{
 .icheck-primary>input:first-child:checked+label::before {
 	background: #6f51c7 !important;
 }
+
+.bg-primary{
+	background: #6f51c7 !important;
+}
+.list-group-item.active{
+
+	background: #6f51c7 !important;
+	border-color: #6f51c7 !important;
+}
+
