@@ -11,3 +11,8 @@
 <script src="public/plugins/Isotope/isotope.pkgd.min.js"></script>
 <script src="public/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <script src="public/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js"></script>
+<script src="public/js/lib/functions.js"></script>
+<script src="public/js/custom.js"></script>
+

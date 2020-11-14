@@ -24,6 +24,7 @@ class CartController /*extends AnotherClass*/
 	public function index(){
 		session_start();
 		$products = $this->products->get();
+		$comboTypes = $this->combos->getTypes();
 		// print_r($products);
 		require_once 'Views/shop/cart.html.php';
 	}

@@ -6,7 +6,7 @@
 
 </head>
 
-<body>
+<body id="body" style="overflow: hidden;">
 	<header class="header">
 
 		<!-- Top Bar -->
@@ -278,7 +278,7 @@
 						</div>
 						<div class="newsletter_content clearfix">
 							<form action="#" class="newsletter_form">
-								<input type="email" class="newsletter_input" required="required" placeholder="Ingrese su dirección de correo electrónico">
+								<input type="email" class="newsletter_input" id="newsletter_input" required="required" placeholder="Ingrese su dirección de correo electrónico">
 								<button class="newsletter_button">Suscribirce</button>
 							</form>
 							<div class="newsletter_unsubscribe_link"><a href="#">darse de baja</a></div>

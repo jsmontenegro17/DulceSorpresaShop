@@ -2,12 +2,16 @@
 <!-- estile page unique -->
 <link rel="stylesheet" type="text/css" href="public/styles/contact_styles.css">
 <link rel="stylesheet" type="text/css" href="public/styles/contact_responsive.css">
-
+<link rel="stylesheet" type="text/css" href="public/styles/contact/index.css">
+<!-- Select2 -->
+<link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 <title>Dulce Sorpresa</title>
 
 </head>
 
-<body>
+
+<body id="body" style="overflow: hidden;">
 
 <div class="super_container">
 	
@@ -17,7 +21,7 @@
 
 		<!-- Top Bar -->
 
-		<div class="top_bar">
+<!-- 		<div class="top_bar">
 			<div class="container">
 				<div class="row">
 					<div class="col d-flex flex-row">
@@ -28,126 +32,41 @@
 								<ul class="standard_dropdown top_bar_dropdown">
 									<li>
 										<a href="#">Español<i class="fas fa-chevron-down"></i></a>
-										<!-- <ul>
+										<ul>
 											<li><a href="#">Italian</a></li>
 											<li><a href="#">Spanish</a></li>
 											<li><a href="#">Japanese</a></li>
-										</ul> -->
+										</ul>
 									</li>
 									<li>
 										<a href="#">$ COP Pesos Colombianos<i class="fas fa-chevron-down"></i></a>
-<!-- 										<ul>
+										<ul>
 											<li><a href="#">EUR Euro</a></li>
 											<li><a href="#">GBP British Pound</a></li>
 											<li><a href="#">JPY Japanese Yen</a></li>
-										</ul> -->
+										</ul>
 									</li>
 								</ul>
 							</div>
-<!-- 							<div class="top_bar_user">
+							<div class="top_bar_user">
 								<div class="user_icon"><img src="public/images/user.svg" alt=""></div>
 								<div><a href="#">Register</a></div>
 								<div><a href="#">Sign in</a></div>
-							</div> -->
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>		
-		</div>
+		</div> -->
 
-		<!-- Header Main -->
+
+
+		<?php include 'Views/includes/menu.html.php'; ?>
+
+		<?php include 'Views/includes/menu-responsive.html.php'; ?>
 
 		<?php include 'Views/includes/navigation.html.php'; ?>
 		
-		<!-- Main Navigation -->
-
-		<?php include 'Views/includes/menu.html.php'; ?>
-		
-		<!-- Menu -->
-
-		<div class="page_menu">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						
-						<div class="page_menu_content">
-							
-							<div class="page_menu_search">
-								<form action="#">
-									<input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
-								</form>
-							</div>
-							<ul class="page_menu_nav">
-								<li class="page_menu_item has-children">
-									<a href="#">Language<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">English<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Italian<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Spanish<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Japanese<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Currency<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">US Dollar<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">EUR Euro<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">GBP British Pound<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">JPY Japanese Yen<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item">
-									<a href="#">Home<i class="fa fa-angle-down"></i></a>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">Super Deals<i class="fa fa-angle-down"></i></a></li>
-										<li class="page_menu_item has-children">
-											<a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
-											<ul class="page_menu_selection">
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-											</ul>
-										</li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Trending Styles<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">Trending Styles<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
-								<li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li>
-							</ul>
-							
-							<div class="menu_contact">
-								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="public/images/phone_white.png" alt=""></div>+57 310 526 1209</div>
-								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="public/images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">dulcesorpresaflorida@gmail.com</a></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 
 	</header>
 	
@@ -165,28 +84,29 @@
 
 						<!-- Contact Item -->
 						<div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
-							<div class="contact_info_image"><img src="images/contact_1.png" alt=""></div>
+							<div class="contact_info_image" style="font-size: 25px; color: #6f51c7 !important;"><i class="fa fa-phone"></i></div>
 							<div class="contact_info_content">
-								<div class="contact_info_title">Phone</div>
-								<div class="contact_info_text">+38 068 005 3570</div>
+								<div class="contact_info_title">Telefono</div>
+								<div class="contact_info_text">+57 310 526 1209</div>
 							</div>
 						</div>
 
 						<!-- Contact Item -->
 						<div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
-							<div class="contact_info_image"><img src="images/contact_2.png" alt=""></div>
+							<div class="contact_info_image" style="font-size: 25px; color: #6f51c7 !important;"><i class="fa fa-at"></i></div>
 							<div class="contact_info_content">
 								<div class="contact_info_title">Email</div>
-								<div class="contact_info_text">fastsales@gmail.com</div>
+								<div class="contact_info_text">dulcesorpresaflorida@gmail.com</div>
 							</div>
 						</div>
 
 						<!-- Contact Item -->
 						<div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
-							<div class="contact_info_image"><img src="images/contact_3.png" alt=""></div>
+							<div class="contact_info_image" style="font-size: 25px; color: #6f51c7 !important;"><i class="fa fa-map-marker-alt"></i></div>
 							<div class="contact_info_content">
-								<div class="contact_info_title">Address</div>
-								<div class="contact_info_text">10 Suffolk at Soho, London, UK</div>
+								<div class="contact_info_title">Direccion</div>
+								<div class="contact_info_text">Carrera 25 # 9-17, Piso 2</div>
+								<div class="contact_info_text">Florida - Valle, Colombia</div>
 							</div>
 						</div>
 
@@ -203,19 +123,35 @@
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
 					<div class="contact_form_container">
-						<div class="contact_form_title">Get in Touch</div>
+						<div class="contact_form_title">Formulario de contacto</div>
 
-						<form action="#" id="contact_form">
-							<div class="contact_form_inputs d-flex flex-md-row flex-column justify-content-between align-items-between">
-								<input type="text" id="contact_form_name" class="contact_form_name input_field" placeholder="Your name" required="required" data-error="Name is required.">
-								<input type="text" id="contact_form_email" class="contact_form_email input_field" placeholder="Your email" required="required" data-error="Email is required.">
-								<input type="text" id="contact_form_phone" class="contact_form_phone input_field" placeholder="Your phone number">
+						<form action="?c=contact&a=save" method="POST" id="contact_form">
+							<div class="row contact_form_inputs d-flex flex-md-row flex-column justify-content-between align-items-between">
+								<div class="col-lg-3" style="padding-bottom: 20px">
+									<input type="text" name="customer_name" id="contact_form_name" class="col-lg-12 form-control" placeholder="Tu nombre" required="required" data-error="Nombre es requerido.">
+								</div>
+								<div class="col-lg-3" style="padding-bottom: 20px">
+									<input type="text" name="customer_email" id="contact_form_email" class="col-lg-12 form-control" placeholder="Tu email" required="required" data-error="Email es requerido.">
+								</div>
+								<div class="col-lg-3" style="padding-bottom: 20px">
+			                    <select class="select_search" name="phone_code" style="width: 100%;" required>
+				                    <option value="+57">Colombia, +57</option>
+                    				<?php foreach ($cuontries as $cuontry) { ?>
+                        				<?php if($cuontry->phone_code != "57"){ ?>
+                        				<option value="+<?php echo $cuontry->phone_code ?>"><?php echo $cuontry->nombre.", +".$cuontry->phone_code ?></option>
+                        				<?php } ?>
+                    				<?php } ?>
+			                    </select>
+			               		</div>
+			               		<div class="col-lg-3">
+									<input type="text" class="col-lg-12 form-control" placeholder="Tu numero de celular" name="customer_phone" required>
+								</div>
 							</div>
 							<div class="contact_form_text">
-								<textarea id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
+								<textarea id="contact_form_message" class="form-control" name="message" rows="4" placeholder="Sugerencia o mensaje" required="required" data-error="Por favor escriba tu mensaje o sugerencia."></textarea>
 							</div>
 							<div class="contact_form_button">
-								<button type="submit" class="button contact_submit_button">Send Message</button>
+								<button type="submit" class="button contact_submit_button">Enviar</button>
 							</div>
 						</form>
 
@@ -231,7 +167,9 @@
 	<div class="contact_map">
 		<div id="google_map" class="google_map">
 			<div class="map_container">
-				<div id="map"></div>
+				<div id="map col-lg-12">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d995.7728417483878!2d-76.24143097084794!3d3.327601538692494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3a12cebefb9ec9%3A0x74177870582b8b!2sCra.%2025%20%23%239-17%2C%20Florida%2C%20Valle%20del%20Cauca!5e0!3m2!1ses!2sco!4v1599066945426!5m2!1ses!2sco" width="100%" height="800" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -250,7 +188,7 @@
 						</div>
 						<div class="newsletter_content clearfix">
 							<form action="#" class="newsletter_form">
-								<input type="email" class="newsletter_input" required="required" placeholder="Ingrese su dirección de correo electrónico">
+								<input type="email" class="newsletter_input" id="newsletter_input" required="required" placeholder="Ingrese su dirección de correo electrónico">
 								<button class="newsletter_button">Suscribirce</button>
 							</form>
 							<div class="newsletter_unsubscribe_link"><a href="#">darse de baja</a></div>
@@ -270,9 +208,6 @@
 
     <!-- END THE MODAL -->
 
-
-	<!-- LOAD EFECT -->
-
 	<?php include "Views/includes/load.html.php"; ?>
 
     <!-- END LOAD EFECT -->
@@ -285,6 +220,9 @@
 
 <?php include 'Views/includes/script.html.php'; ?>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+<!-- Select2 -->
+<script src="https://adminlte.io/themes/v3/plugins/select2/js/select2.full.min.js"></script>
+<script src="public/js/contact/index.js"></script>
 <script src="public/js/contact_custom.js"></script>
 
 </body>

@@ -7,7 +7,7 @@
 
 </head>
 
-<body>
+<body id="body" style="overflow: hidden;">
 
 <div class="super_container">
 	
@@ -17,7 +17,7 @@
 
 		<!-- Top Bar -->
 
-		<div class="top_bar">
+<!-- 		<div class="top_bar">
 			<div class="container">
 				<div class="row">
 					<div class="col d-flex flex-row">
@@ -28,38 +28,33 @@
 								<ul class="standard_dropdown top_bar_dropdown">
 									<li>
 										<a href="#">Español<i class="fas fa-chevron-down"></i></a>
-										<!-- <ul>
+										<ul>
 											<li><a href="#">Italian</a></li>
 											<li><a href="#">Spanish</a></li>
 											<li><a href="#">Japanese</a></li>
-										</ul> -->
+										</ul>
 									</li>
 									<li>
 										<a href="#">$ COP Pesos Colombianos<i class="fas fa-chevron-down"></i></a>
-<!-- 										<ul>
+										<ul>
 											<li><a href="#">EUR Euro</a></li>
 											<li><a href="#">GBP British Pound</a></li>
 											<li><a href="#">JPY Japanese Yen</a></li>
-										</ul> -->
+										</ul>
 									</li>
 								</ul>
 							</div>
-<!-- 							<div class="top_bar_user">
+							<div class="top_bar_user">
 								<div class="user_icon"><img src="public/images/user.svg" alt=""></div>
 								<div><a href="#">Register</a></div>
 								<div><a href="#">Sign in</a></div>
-							</div> -->
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>		
-		</div>
+		</div> -->
 
-		<!-- Header Main -->
-
-		<?php include 'Views/includes/navigation.html.php'; ?>
-		
-		<!-- Main Navigation -->
 
 		<?php include 'Views/includes/menu.html.php'; ?>
 		
@@ -72,6 +67,9 @@
 
 	<div class="single_product">
 		<div class="container">
+			<!-- Header Main -->
+			<?php include 'Views/includes/navigation.html.php'; ?>
+			<!-- Main Navigation -->
 			<div class="row">
 
 				<!-- Images -->
@@ -125,7 +123,20 @@
 								<div class="product_price">$<?php echo $combo->combo_sale_price?></div>
 								<div class="button_container">
 									<button type="button" data-url="?c=cart&a=add&combo_id=<?php echo $combo->combo_id; ?>" class="button cart_button add-cart">Agregar al carrito</button>
-									<div class="product_fav"><i class="fas fa-heart"></i></div>
+									<div class="product_fav 
+									<?php $arrayFav = $_SESSION['fav'];
+			 						$find=false;
+			 						$number = 0;
+							 		for ($i=0; $i < count($arrayFav) ; $i++) { 
+							 			
+							 			if ($arrayFav[$i]['combo_id'] == $combo->combo_id) {
+							 				$find = true;
+							 				$number = $i;
+							 			}
+							 		}
+							 		if ($find == true) {
+							 			echo "active";
+							 		} ?>" data-url="?c=shop&a=fav&combo_id=<?php echo $combo->combo_id; ?>" data-id="<?php echo $combo->combo_id; ?>"><i class="fas fa-heart"></i></div>
 								</div>
 								
 							</form>
@@ -148,7 +159,7 @@
 						</div>
 						<div class="newsletter_content clearfix">
 							<form action="#" class="newsletter_form">
-								<input type="email" class="newsletter_input" required="required" placeholder="Ingrese su dirección de correo electrónico">
+								<input type="email" class="newsletter_input" id="newsletter_input" required="required" placeholder="Ingrese su dirección de correo electrónico">
 								<button class="newsletter_button">Suscribirce</button>
 							</form>
 							<div class="newsletter_unsubscribe_link"><a href="#">darse de baja</a></div>

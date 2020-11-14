@@ -8,18 +8,18 @@
 
 </head>
 
-<body>
+<body id="body" style="overflow: hidden;">
 
-<div class="super_container">
+<div class="super_container" >
 	
 	<!-- Header -->
 	
-	<header class="header">
+	<header class="header" >
 
 		<!-- Top Bar -->
-
-		<div class="top_bar">
-			<div class="container">
+<!-- 
+		<div class="top_bar" >
+			<div class="container" >
 				<div class="row">
 					<div class="col d-flex flex-row">
 						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="public/images/phone.png" alt=""></div>+57 310 526 1209</div>
@@ -29,44 +29,43 @@
 								<ul class="standard_dropdown top_bar_dropdown">
 									<li>
 										<a href="#">Español<i class="fas fa-chevron-down"></i></a>
-										<!-- <ul>
+										<ul>
 											<li><a href="#">Italian</a></li>
 											<li><a href="#">Spanish</a></li>
 											<li><a href="#">Japanese</a></li>
-										</ul> -->
+										</ul>
 									</li>
 									<li>
 										<a href="#">$ COP Pesos Colombianos<i class="fas fa-chevron-down"></i></a>
-<!-- 										<ul>
+										<ul>
 											<li><a href="#">EUR Euro</a></li>
 											<li><a href="#">GBP British Pound</a></li>
 											<li><a href="#">JPY Japanese Yen</a></li>
-										</ul> -->
+										</ul>
 									</li>
 								</ul>
 							</div>
-<!-- 							<div class="top_bar_user">
+							<div class="top_bar_user">
 								<div class="user_icon"><img src="public/images/user.svg" alt=""></div>
 								<div><a href="#">Register</a></div>
 								<div><a href="#">Sign in</a></div>
-							</div> -->
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>		
 		</div>
-
-		<!-- Header Main -->
-
-		<?php include 'Views/includes/navigation.html.php'; ?>
-		
-		<!-- Main Navigation -->
+ -->
 
 		<?php include 'Views/includes/menu.html.php'; ?>
 		
 		<!-- Menu -->
 
 		<?php include 'Views/includes/menu-responsive.html.php'; ?>
+
+
+		<!-- Header Main -->
+
 
 	</header>
 	
@@ -80,15 +79,29 @@
 		</div>
 	</div>
 
+
 	<!-- Shop -->
 
 	<div class="shop">
 		<div class="container">
+			<?php include 'Views/includes/navigation.html.php'; ?>
+		
+			<!-- Main Navigation -->
 			<div class="row">
 				<div class="col-lg-3">
 
 					<!-- Shop Sidebar -->
 					<div class="shop_sidebar">
+						<div class="sidebar_section">
+							<div class="sidebar_title">Tipo de combo</div>
+							<ul class="sidebar_categories">
+								<li><a class="load" href="?c=Shop&a=index" >Todos ( <?php echo count($combos); ?> )</a></li>
+								<?php foreach($comboTypes as $comboType){ ?>
+								<?php $count_types = $this->combos->getTypeCombo($comboType->combo_type_name); ?>
+								<li><a class="load" href="?c=Shop&a=typeCombo&type=<?php echo $comboType->combo_type_name; ?>" ><?php echo ucwords($comboType->combo_type_name)." (".count($count_types).")"; ?></a></li>
+								<?php } ?>
+							</ul>
+						</div>
 						<div class="sidebar_section filter_by_section">
 							<div class="sidebar_title">Filtrar</div>
 							<div class="sidebar_subtitle">Precio</div>
@@ -99,7 +112,7 @@
 							</div>
 						</div>
 <!-- 						<div class="sidebar_section">
-							<div class="sidebar_subtitle brands_subtitle">Brands</div>
+							<div class="sidebar_subtitle brands_subtitle">Tipos de combo</div>
 							<ul class="brands_list">
 								<li class="brand"><a href="#">Apple</a></li>
 								<li class="brand"><a href="#">Beoplay</a></li>
@@ -136,24 +149,48 @@
 								</ul>
 							</div>
 						</div>
-
+						
 						<div class="product_grid">
 							<div class="product_grid_border"></div>
 
 							<?php foreach($combos as $combo){ ?>
+							<?php $combo_images = $this->combos->comboImages($combo->combo_id);
 
+					 		if(count($combo_images)!=0){
+						 		foreach ($combo_images as $combo_image) {
+						 			$combo_image_name = $combo_image->combo_image_name;
+						 		}
+						 	}else{
+						 		$combo_image_name = "";
+						 	} ?>
 							<!-- Product Item -->
 							<div class="product_item is_new" >
 								<div class="product_border"></div>
-								<a href="?c=shop&a=product&combo_id=<?php echo $combo->combo_id; ?>"><div class="product_image d-flex flex-column align-items-center justify-content-center" style="overflow: hidden;"><img src="<?php echo $combo->combo_image_name; ?>" alt="" style="height: 100%; width: auto;"></div></a>
+								<a class="load" href="?c=shop&a=product&combo_id=<?php echo $combo->combo_id; ?>"><div class="product_image d-flex flex-column align-items-center justify-content-center" style="overflow: hidden;"><img src="<?php echo $combo_image_name ?>" alt="" style="height: 100%; width: auto;"></div></a>
 								<div class="product_content">
-									<div class="product_price"><a href="?c=shop&a=product&combo_id=<?php echo $combo->combo_id; ?>" style="color: black;">$<?php echo $combo->combo_sale_price; ?></a></div>
-									<div class="product_name"><div><a href="?c=shop&a=product&combo_id=<?php echo $combo->combo_id; ?>"><strong><?php echo $combo->combo_name; ?></strong></a></div></div>
+									<div class="product_price">$<?php echo $combo->combo_sale_price; ?></a></div>
+									<div class="product_name"><div><a class="load" href="?c=shop&a=product&combo_id=<?php echo $combo->combo_id; ?>"><strong><?php echo $combo->combo_name; ?></strong></a></div></div>
 								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
+								
+								
+								<div class="product_fav
+								<?php if(isset($_SESSION['fav'])){ ?>
+								<?php $arrayFav = $_SESSION['fav'];
+		 						$find=false;
+		 						$number = 0;
+						 		for ($i=0; $i < count($arrayFav) ; $i++) { 
+						 			
+						 			if ($arrayFav[$i]['combo_id'] == $combo->combo_id) {
+						 				$find = true;
+						 				$number = $i;
+						 			}
+						 		}
+						 		if ($find == true) {
+						 			echo "active";
+						 		} } ?>" data-url="?c=shop&a=fav&combo_id=<?php echo $combo->combo_id; ?>" data-id="<?php echo $combo->combo_id; ?>"><i class="fas fa-heart"></i></div>
 								<ul class="product_marks">
 									<li class="product_mark product_discount">-25%</li>
-									<a href="?c=shop&a=show" data-id="<?php echo $combo->combo_id; ?>" class="show-content-modal"><li class="product_mark product_show"><i class="fa fa-eye"></i></li></a>
+									<a class="show-content-modal load" href="?c=shop&a=show" data-id="<?php echo $combo->combo_id; ?>" class="show-content-modal"><li class="product_mark product_show"><i class="fa fa-eye"></i></li></a>
 									<?php 
 
 										$today=date('Y-m-d');
@@ -190,7 +227,7 @@
 						</div>
 						<div class="newsletter_content clearfix">
 							<form action="#" class="newsletter_form">
-								<input type="email" class="newsletter_input" required="required" placeholder="Ingrese su dirección de correo electrónico">
+								<input type="email" class="newsletter_input" id="newsletter_input" required="required" placeholder="Ingrese su dirección de correo electrónico">
 								<button class="newsletter_button">Suscribirce</button>
 							</form>
 							<div class="newsletter_unsubscribe_link"><a href="#">darse de baja</a></div>
@@ -213,12 +250,11 @@
 
 	<!-- LOAD EFECT -->
 
-	<?php include "Views/includes/load.html.php"; ?>
+	<?php include "Views/includes/load-index.html.php"; ?>
 
     <!-- END LOAD EFECT -->
 
 	<!-- Copyright -->
-
 
 <?php include "Views/includes/footer.html.php"; ?>
 

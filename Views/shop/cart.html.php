@@ -12,12 +12,12 @@
 
 </head>
 
-<body>
+<body id="body" style="overflow: hidden;">
 	<header class="header">
 
 		<!-- Top Bar -->
 
-		<div class="top_bar">
+<!-- 		<div class="top_bar">
 			<div class="container">
 				<div class="row">
 					<div class="col d-flex flex-row">
@@ -28,44 +28,45 @@
 								<ul class="standard_dropdown top_bar_dropdown">
 									<li>
 										<a href="#">Español<i class="fas fa-chevron-down"></i></a>
-										<!-- <ul>
+										<ul>
 											<li><a href="#">Italian</a></li>
 											<li><a href="#">Spanish</a></li>
 											<li><a href="#">Japanese</a></li>
-										</ul> -->
+										</ul>
 									</li>
 									<li>
 										<a href="#">$ COP Pesos Colombianos<i class="fas fa-chevron-down"></i></a>
-<!-- 										<ul>
+										<ul>
 											<li><a href="#">EUR Euro</a></li>
 											<li><a href="#">GBP British Pound</a></li>
 											<li><a href="#">JPY Japanese Yen</a></li>
-										</ul> -->
+										</ul>
 									</li>
 								</ul>
 							</div>
-<!-- 							<div class="top_bar_user">
+							<div class="top_bar_user">
 								<div class="user_icon"><img src="public/images/user.svg" alt=""></div>
 								<div><a href="#">Register</a></div>
 								<div><a href="#">Sign in</a></div>
-							</div> -->
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>		
-		</div>
+		</div> -->
 
-		<!-- Header Main -->
 
-		<?php include 'Views/includes/navigation.html.php'; ?>
-		
-		<!-- Main Navigation -->
 
 		<?php include 'Views/includes/menu.html.php'; ?>
 		
 		<!-- Menu -->
 
 		<?php include 'Views/includes/menu-responsive.html.php'; ?>
+		<!-- Header Main -->
+
+		<?php include 'Views/includes/navigation.html.php'; ?>
+		
+		<!-- Main Navigation -->
 
 	</header>
 
@@ -75,10 +76,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12" name="cart">
-					<div class="tab-content" id="nav-tabContent">
-					  <div class="tab-pane fade show active" id="nav-cart" role="tabpanel" aria-labelledby="nav-cart-tab"><br>
+					<div class="tab-content" id="nav-tabContent" >
+					  <div class="tab-pane fade show active" id="nav-cart" role="tabpanel" aria-labelledby="nav-cart-tab">
 					  	<div class="cart_container">
-							<div class="cart_title">Tu carrito de compras</div>
+							<div class="cart_title"></div>
 							<div class="cart_items">
 								<ul class="cart_list">
 									<?php if(isset($_SESSION['shop-cart'])){ ?>
@@ -131,11 +132,22 @@
 									</div>
 								</div>
 							</div>
+							<div class="row">
 
-							<div class="cart_buttons">
-								<a href="?c=shop&a=index" class="button cart_button_clear"><i class="fa fa-plus-circle"></i> Agregar más al carrito</a>
-								<a href="?c=order&a=create" class="button cart_button_checkout">Empezar hacer la orden</a>
+								<?php if (isset($_SESSION['total-price'])) { ?>
+								<div class="cart_buttons width-50p col-lg-6">
+									<a href="?c=shop&a=index" class="button cart_button_clear" id="add-cart"><i class="fa fa-plus-circle"></i> Agregar <span class="hidden-max-992px">más</span></a>
+								</div>
+								<div class="cart_buttons width-50">
+									<a href="?c=order&a=create" class="button cart_button_checkout btn-make-order"><i class="fa fa-edit"></i> Hacer orden</a>
+								</div>
+								<?php }else{?> 
+								<div class="cart_buttons width-50p col-lg-12">
+									<a href="?c=shop&a=index" class="button cart_button_clear" id="add-cart"><i class="fa fa-plus-circle"></i> Agrega <span class="hidden-max-992px"> tu primer combo</span></a>
+								</div>
+								<?php } ?>
 							</div>
+							
 						</div>
 					  </div>
 					</div>
@@ -158,7 +170,7 @@
 						</div>
 						<div class="newsletter_content clearfix">
 							<form action="#" class="newsletter_form">
-								<input type="email" class="newsletter_input" required="required" placeholder="Ingrese su dirección de correo electrónico">
+								<input type="email" class="newsletter_input" id="newsletter_input" required="required" placeholder="Ingrese su dirección de correo electrónico">
 								<button class="newsletter_button">Suscribirce</button>
 							</form>
 							<div class="newsletter_unsubscribe_link"><a href="#">darse de baja</a></div>

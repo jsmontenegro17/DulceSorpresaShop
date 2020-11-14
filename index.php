@@ -15,7 +15,7 @@ if (!isset($_REQUEST['c'])) {
 	$controller = $_REQUEST['c'];
 	$action = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'index';
 
-	require_once "Controllers/".$controller."Controller.php";
+	require_once "Controllers/".ucwords($controller)."Controller.php";
 	$controller = $controller."Controller";
 	$controller = new $controller;
 

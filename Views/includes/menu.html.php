@@ -12,75 +12,77 @@
 							<div class="cat_burger"><span></span><span></span><span></span></div>
 							<div class="cat_menu_text">categorias</div>
 						</div>
-<!-- 
 						<ul class="cat_menu">
-							<li><a href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>
-							<li><a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>
+							<?php foreach($comboTypes as $comboType){ ?>
+								<li><a class="load" href="?c=Shop&a=typeCombo&type=<?php echo $comboType->combo_type_name; ?>" ><?php echo ucwords($comboType->combo_type_name); ?><i class="fas fa-chevron-right ml-auto"></i></a></li>
+							<?php } ?>
+<!-- 							<li><a class="load" href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>
+							<li><a class="load" href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>
 							<li class="hassubs">
-								<a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
+								<a class="load" href="#">Hardware<i class="fas fa-chevron-right"></i></a>
 								<ul>
 									<li class="hassubs">
-										<a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
+										<a class="load" href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
 										<ul>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+											<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+											<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+											<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+											<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
 										</ul>
 									</li>
-									<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+									<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+									<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+									<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
 								</ul>
 							</li>
-							<li><a href="#">Smartphones & Tablets<i class="fas fa-chevron-right"></i></a></li>
-							<li><a href="#">TV & Audio<i class="fas fa-chevron-right"></i></a></li>
-							<li><a href="#">Gadgets<i class="fas fa-chevron-right"></i></a></li>
-							<li><a href="#">Car Electronics<i class="fas fa-chevron-right"></i></a></li>
-							<li><a href="#">Video Games & Consoles<i class="fas fa-chevron-right"></i></a></li>
-							<li><a href="#">Accessories<i class="fas fa-chevron-right"></i></a></li>
-						</ul> -->
+							<li><a class="load" href="#">Smartphones & Tablets<i class="fas fa-chevron-right"></i></a></li>
+							<li><a class="load" href="#">TV & Audio<i class="fas fa-chevron-right"></i></a></li>
+							<li><a class="load" href="#">Gadgets<i class="fas fa-chevron-right"></i></a></li>
+							<li><a class="load" href="#">Car Electronics<i class="fas fa-chevron-right"></i></a></li>
+							<li><a class="load" href="#">Video Games & Consoles<i class="fas fa-chevron-right"></i></a></li>
+							<li><a class="load" href="#">Accessories<i class="fas fa-chevron-right"></i></a></li> -->
+						</ul> 
 					</div>
 
 					<!-- Main Nav Menu -->
 
 					<div class="main_nav_menu ml-auto">
 						<ul class="standard_dropdown main_nav_dropdown">
-							<li><a href="?c=shop&a=index">Todos los productos<i class="fas fa-chevron-down"></i></a></li>
+							<li><a class="load" href="?c=shop&a=index">Todos los productos<i class="fas fa-chevron-down"></i></a></li>
 							<li>
-								<a href="#">¿Quienes somos?<i class="fas fa-chevron-down"></i></a>
+								<a class="load" href="?c=aboutus&a=index">¿Quienes somos?<i class="fas fa-chevron-down"></i></a>
 <!-- 										<ul>
 									<li>
-										<a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+										<a class="load" href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
 										<ul>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+											<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+											<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+											<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
 										</ul>
 									</li>
-									<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+									<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+									<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+									<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
 								</ul> -->
 							</li>
 <!-- 									<li class="hassubs">
-								<a href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
+								<a class="load" href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
 								<ul>
 									<li>
-										<a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+										<a class="load" href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
 										<ul>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+											<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+											<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+											<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
 										</ul>
 									</li>
-									<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+									<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+									<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+									<li><a class="load" href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
 								</ul>
 							</li> -->
-							<li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-							<li><a href="?c=contact&a=index">Contactanos<i class="fas fa-chevron-down"></i></a></li>
+							<li><a class="load" href="https://dulcesorpresaflorida.blogspot.com">Blog<i class="fas fa-chevron-down"></i></a></li>
+							<li><a class="load" href="?c=contact&a=index">Contactanos<i class="fas fa-chevron-down"></i></a></li>
 						</ul>
 					</div>
 

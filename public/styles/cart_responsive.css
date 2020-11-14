@@ -110,6 +110,16 @@
 
 @media only screen and (max-width: 991px)
 {
+	.width-45p{
+        width: 45%;
+    }
+
+    .width-50p{
+        width: 50%;
+    }
+    .hidden-max-992px{
+		display:none;
+	}
 	.top_bar
 	{
 		/*display: none;*/
